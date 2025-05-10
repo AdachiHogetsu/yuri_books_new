@@ -1,0 +1,78 @@
+{
+    "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-24",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-24",
+            "path": "C:\\Program Files\\Java\\jdk-24",
+            "default": true
+        }
+    ],
+    //maven、gradle的配置文件变更后自动更新
+    "java.configuration.updateBuildConfiguration": "automatic",
+    //java源文件路径
+    "java.project.sourcePaths": [
+        "src/main/java",
+        "src/test/java",
+    ],
+    //关闭自动编译
+    "java.autobuild.enabled": false,
+    //关闭debug前强制编译
+    "java.debug.settings.forceBuildBeforeLaunch": false,
+    //在项目根目录下生成.classpath等配置文件
+    "java.import.generatesMetadataFilesAtProjectRoot": true,
+    //<!--配置maven, 换成maven安装目录下的相关配置 -->
+    "maven.executable.path": "D:\\Maven\\apache-maven-3.9.9\\bin\\mvn.cmd",
+    "java.configuration.maven.userSettings": "D:\\Maven\\apache-maven-3.9.9\\conf\\settings.xml",
+    "maven.terminal.customEnv": [
+        {
+            "environmentVariable": "JAVA_HOME",
+            //<!--jdk安装根目录-->
+            "value": "C:\\Program Files\\Java\\jdk-24"
+        }
+    ],
+    //使用Deploy插件来进行热部署时所需要的配置信息
+    "deploy": {
+        "packages": [
+            {
+                "name": "前端",
+                "description": "webapp里面的所有文件",
+                "files": [
+                    "src/main/webapp/*",
+                    "src/main/webapp/*/*",
+                    "src/main/webapp/*.*",
+                    "src/main/webapp/*/*.*",
+                    "src/main/webapp/*/*/*.*",
+                    "src/main/webapp/*/*/*/*.*",
+                    "src/main/webapp/*/*/*/*/*.*",
+                    "src/main/webapp/*/*/*/*/*",
+                    "src/main/webapp/*/*/*/*/*/*.*",
+                ],
+                "exclude": [
+                    "src/main/webapp/test/*"
+                ],
+                "deployOnSave": true,
+                "useTargetList": true,
+                "button": {
+                    "text": "热部署",
+                    "tooltip": "点击这里将前端部署到hotsite",
+                    "targets": [ "HOTSITE" ]
+                },
+            }
+        ],
+        "targets": [
+            {
+                "type": "local",
+                "name": "HOTSITE",
+                "description": "A local folder",
+                "dir": "target/YURI/",
+                "mappings": [
+                    {
+                        "source": "src/main/webapp",
+                        "isRegEx": false,
+                        "target": "/"
+                    }
+                ]
+            }
+        ]
+    }
+}
